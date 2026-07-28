@@ -26,6 +26,38 @@
 @media(max-width:760px){.benchmark-ladder{padding:10px}.benchmark-row{grid-template-columns:64px 22px minmax(0,1fr);min-height:92px}.benchmark-value{font-size:1.75rem}.benchmark-copy{padding-left:12px}.tier-card summary{grid-template-columns:48px 1fr auto;padding:13px}.tier-code{width:40px;height:40px}.tier-body{padding:0 13px 13px}.tier-speed-line{grid-template-columns:46px 1fr}.tier-mon{font-size:.66rem}.insight-grid{grid-template-columns:1fr}}
 @media print{.benchmark-ladder,.tier-card,.insight{background:#fff;color:#111;box-shadow:none;border-color:#bbb}.tier-card{break-inside:avoid}.tier-card:not([open]) .tier-body{display:block}.tier-controls{display:none}.benchmark-value,.tier-code{color:#111}.benchmark-meta,.tier-card summary small,.tier-mon small,.insight p{color:#444}}
 </style>
+  <style>
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: #101722;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .site-nav > a {
+    display: block;
+    padding: 8px 14px;
+    color: #dce7f5;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+  }
+
+  .site-nav > a:hover,
+  .site-nav > a[aria-current="page"] {
+    color: #ffffff;
+    background: #287ea8;
+    border-color: #56b8df;
+  }
+</style>
 </head>
 <body>
   <nav class="site-nav" aria-label="Guide navigation">
