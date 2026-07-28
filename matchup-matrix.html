@@ -50,6 +50,7 @@
     <a href="./speed-tiers.html">Speed Tiers</a>
     <a href="./matchup-matrix.html" aria-current="page">Matchup Matrix</a>
     <a href="./coverage-lab.html">Coverage Lab</a>
+    <a href="./field-pulse.html">Field Pulse</a>
   </nav>
   <header class="topbar"><div class="shell"><div class="brand">REGULATION M-B · PREP LAB</div><nav class="topnav"><a href="#matrix">Matrix</a><a href="#method">How to use it</a><a href="#sources">Method</a></nav></div></header>
   <main>
@@ -85,7 +86,7 @@
         </div>
       </div>
       <div class="matrix-shell">
-        <div class="matrix-meta"><span><strong id="visibleCount">16 matchups</strong> · the four-anchor M-B-weighted field</span><span>Click <strong>+</strong> for preview tells and a longer note.</span></div>
+        <div class="matrix-meta"><span><strong id="visibleCount">17 matchups</strong> · the current high-weight M-B field</span><span>Click <strong>+</strong> for preview tells and a longer note.</span></div>
         <div class="matrix-scroll"><table class="matrix"><thead><tr><th>Opponent</th><th>Prep focus</th><th>My outlook</th><th>Lead</th><th>My four / Mega</th><th>Preserve</th><th>Turn 4 condition</th><th aria-label="Open details"></th></tr></thead><tbody id="matrixBody"></tbody></table></div>
         <div class="empty" id="emptyState">No archetypes match that filter yet.</div>
       </div>
@@ -96,7 +97,7 @@
       </div>
     </div></section>
   </main>
-  <footer class="sources" id="sources"><div class="shell"><strong>Method note.</strong> The opponent rows mirror the 16 families in the Archetype Guide’s M-B-weighted six-event field: two persistence events from M-A, then Smogon Major, Arena II, Encore, and Global VGC Welcome Tour from M-B. “Prep focus” is a reminder of the preview question—not a claim that one check solves a doubles matchup. Matrix entries are visitor-created planning notes stored only in local browser storage. Evidence frame refreshed July 28, 2026.</div></footer>
+  <footer class="sources" id="sources"><div class="shell"><strong>Method note.</strong> The opponent rows mirror the 17 families in the Archetype Guide’s current M-B field: Smogon Major, Maddo's Cup #10, Nikita Memorial, VGC Trainer School #2, and Open League #2 form the completed high-weight evidence base; Field Pulse labels smaller and live signals separately. “Prep focus” is a reminder of the preview question—not a claim that one check solves a doubles matchup. Matrix entries are visitor-created planning notes stored only in local browser storage. Evidence frame refreshed July 28, 2026.</div></footer>
   <script>
     const matchups = [
       {id:'01',tier:'high',name:'Aerodactyl / Charizard / Farigiraf Balance',short:'Aero Zard balance',focus:'Read the Mega branch and Farigiraf priority denial.',tell:'Aerodactyl + Charizard creates immediate Mega and weather ambiguity; Farigiraf changes priority and speed interactions.',watch:'Keep answers to both Garchomp ground pressure and Sylveon or Kingambit endgames.'},
@@ -114,11 +115,12 @@
       {id:'13',tier:'high',name:'Gardevoir / Maushold / Talonflame Offense',short:'Gardevoir Maushold',focus:'Break support without losing your answer to Fairy or the back endgame.',tell:'Talonflame + Gardevoir/Kommo-o is the speed-support branch; Maushold can enable protected positioning.',watch:'Respect priority speed support before relying on a narrow natural-speed edge.'},
       {id:'14',tier:'specialist',name:'Mega Metagross Balance',short:'Mega Metagross balance',focus:'Confirm the Mega before spending Ground or Dark coverage.',tell:'Grimmsnarl + Metagross suggests screens; Charizard + Garchomp is the direct spread-pressure branch.',watch:'Make progress through screens or Toxapex without losing the Fairy/Water piece needed later.'},
       {id:'15',tier:'specialist',name:'Blaziken / Froslass Anti-Meta Offense',short:'Blaziken Froslass',focus:'Determine snow versus Froslass branch before assigning targets.',tell:'Froslass + Blaziken/Sneasler is maximum tempo; Toxapex + Dragonite is the slower counterpunch.',watch:'Preserve priority or reliable speed control once Blaziken begins to convert turns.'},
-      {id:'16',tier:'specialist',name:'Mega Raichu Y / Floette Balance',short:'Raichu Y Floette',focus:'Keep Ground pressure and a Floette answer without opening the Incineroar pivot.',tell:'Raichu Y + Floette can pressure with speed and Fairy support while the back pivots toward its preferred endgame.',watch:'Ground blockers still need cover from Incineroar, Milotic, and Sinistcha attachments.'}
+      {id:'16',tier:'specialist',name:'Mega Raichu Y / Floette Balance',short:'Raichu Y Floette',focus:'Keep Ground pressure and a Floette answer without opening the Incineroar pivot.',tell:'Raichu Y + Floette can pressure with speed and Fairy support while the back pivots toward its preferred endgame.',watch:'Ground blockers still need cover from Incineroar, Milotic, and Sinistcha attachments.'},
+      {id:'17',tier:'must',name:'Charizard / Garchomp / Kingambit Field Balance',short:'Zard Chomp King balance',focus:'Do not solve the early Charizard / Garchomp spread board by giving away the resource needed for Kingambit / Basculegion later.',tell:'Incineroar + Sinistcha often reveals a slow positioning plan; Charizard + Garchomp is the immediate spread branch. Tailwind, rain, Venusaur, or Farigiraf can be the attachment.',watch:'Identify the attachment before committing your Fairy, Water, Grass, or priority-denial resources. The core is broad; the sixth-slot mode decides the clean line.'}
     ];
     const reweightedTiers={
-      '01':'high','02':'must','03':'must','04':'must','05':'high','06':'high','07':'must','08':'must',
-      '09':'high','10':'high','11':'specialist','12':'high','13':'specialist','14':'high','15':'specialist','16':'specialist'
+      '01':'high','02':'must','03':'specialist','04':'must','05':'high','06':'high','07':'high','08':'specialist',
+      '09':'specialist','10':'high','11':'specialist','12':'specialist','13':'specialist','14':'specialist','15':'specialist','16':'specialist','17':'must'
     };
     matchups.forEach(matchup=>{matchup.tier=reweightedTiers[matchup.id]||matchup.tier});
     const storageKey='regulation-mb-matchup-matrix-v1';
