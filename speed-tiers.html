@@ -80,6 +80,7 @@
 <style id="johto-type-contrast">
   .type,.type[class],.type-pill,.type-pill[class],.type-chip,.type-chip[class]{color:#183126!important;background:#dfe8bd!important;border:2px solid #55734c!important;border-radius:0!important;font-weight:900!important;text-shadow:none!important}.type.Fire,.type-fire,.type-pill.type-fire,.type-chip.type-fire{color:#3a160f!important;background:#ed9a78!important;border-color:#a6533d!important}.type.Water,.type-water,.type-pill.type-water,.type-chip.type-water{color:#12334a!important;background:#9fc8e0!important;border-color:#4d7f9a!important}.type.Grass,.type-grass,.type-pill.type-grass,.type-chip.type-grass{color:#20391e!important;background:#b7cf8c!important;border-color:#637f4c!important}.type.Electric,.type-electric,.type-pill.type-electric,.type-chip.type-electric{color:#3c3108!important;background:#efd675!important;border-color:#987f2d!important}.type.Ice,.type-ice,.type-pill.type-ice,.type-chip.type-ice{color:#173b3c!important;background:#b8e1df!important;border-color:#5d9592!important}.type.Fighting,.type-fighting,.type-pill.type-fighting,.type-chip.type-fighting{color:#39170f!important;background:#dfa182!important;border-color:#9b5540!important}.type.Poison,.type-poison,.type-pill.type-poison,.type-chip.type-poison{color:#321a42!important;background:#c49ed1!important;border-color:#7b578b!important}.type.Ground,.type-ground,.type-pill.type-ground,.type-chip.type-ground{color:#3a2a16!important;background:#d9bd82!important;border-color:#987a47!important}.type.Flying,.type-flying,.type-pill.type-flying,.type-chip.type-flying{color:#1b3048!important;background:#b6c9e9!important;border-color:#667eaa!important}.type.Psychic,.type-psychic,.type-pill.type-psychic,.type-chip.type-psychic{color:#421c2e!important;background:#e5a7bb!important;border-color:#a45b77!important}.type.Bug,.type-bug,.type-pill.type-bug,.type-chip.type-bug{color:#2e3716!important;background:#c6ce77!important;border-color:#77843c!important}.type.Rock,.type-rock,.type-pill.type-rock,.type-chip.type-rock{color:#3b2d1b!important;background:#c9af77!important;border-color:#896f41!important}.type.Ghost,.type-ghost,.type-pill.type-ghost,.type-chip.type-ghost{color:#2d2645!important;background:#aaa1d0!important;border-color:#686091!important}.type.Dragon,.type-dragon,.type-pill.type-dragon,.type-chip.type-dragon{color:#25204d!important;background:#a49ce0!important;border-color:#5e57a7!important}.type.Dark,.type-dark,.type-pill.type-dark,.type-chip.type-dark{color:#fff9db!important;background:#625a52!important;border-color:#403b36!important}.type.Steel,.type-steel,.type-pill.type-steel,.type-chip.type-steel{color:#20323a!important;background:#bdced1!important;border-color:#6a858b!important}.type.Fairy,.type-fairy,.type-pill.type-fairy,.type-chip.type-fairy{color:#47253d!important;background:#edbad1!important;border-color:#a66584!important}.type.Normal,.type-normal,.type-pill.type-normal,.type-chip.type-normal{color:#373625!important;background:#d5d0a9!important;border-color:#898363!important}
 </style>
+<link href="./site-theme.css" rel="stylesheet"/>
 </head>
 <body>
   <nav class="site-nav" aria-label="Guide navigation">
@@ -352,6 +353,46 @@ function updateCalc(){const raw=Math.max(1,Number(document.getElementById('displ
 ['displayedSpeed','modifier'].forEach(id=>document.getElementById(id).addEventListener('input',updateCalc));['finalSpeed','targetBenchmark'].forEach(id=>document.getElementById(id).addEventListener('input',updateBenchmark));
 const scarfGrid=document.getElementById('scarfGrid');const originalCards=[...scarfGrid.children];function sortScarf(mode){const cards=[...originalCards].filter(c=>c.dataset.name.includes(document.getElementById('scarfSearch').value.toLowerCase()));cards.sort((a,b)=>{const an=a.dataset.name,bn=b.dataset.name;const au=scarfUsage.find(x=>x.name.toLowerCase()===an),bu=scarfUsage.find(x=>x.name.toLowerCase()===bn);if(mode==='speed'){const ar=roster.find(x=>x.name.toLowerCase()===an),br=roster.find(x=>x.name.toLowerCase()===bn);return br.scarf-ar.scarf}return bu.uses-au.uses});scarfGrid.innerHTML='';cards.forEach(c=>scarfGrid.appendChild(c))}
 let scarfMode='usage';document.getElementById('scarfSearch').addEventListener('input',()=>sortScarf(scarfMode));document.querySelectorAll('[data-scarf-sort]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-scarf-sort]').forEach(x=>x.classList.remove('active'));b.classList.add('active');scarfMode=b.dataset.scarfSort;sortScarf(scarfMode)}));
+const benchmarkSpriteRows=[
+  [['Mega Aerodactyl','aerodactyl-mega'],['Mega Alakazam','alakazam-mega']],
+  [['Mega Delphox','delphox-mega']],
+  [['Mega Gengar','gengar-mega'],['Mega Raichu Y','raichu-megay'],['Jolteon','jolteon']],
+  [['Talonflame','talonflame'],['Mega Pyroar','pyroar-mega']],
+  [['Sneasler','sneasler'],['Mega Froslass','froslass-mega']],
+  [['Whimsicott','whimsicott']],
+  [['Mega Staraptor','staraptor-mega'],['Mega Metagross','metagross-mega']],
+  [['Garchomp','garchomp'],['Mega Floette','floette-mega']],
+  [['Mega Charizard Y','charizard-megay']],
+  [['Hydreigon','hydreigon']],
+  [['Archaludon','archaludon'],['Ceruledge','ceruledge'],['Kommo-o','kommo-o']],
+  [['Mega Swampert','swampert-mega'],['Sinistcha','sinistcha'],['Politoed','politoed']],
+  [['Incineroar','incineroar'],['Farigiraf','farigiraf'],['Grimmsnarl','grimmsnarl']],
+  [['Kingambit','kingambit'],['Mega Mawile','mawile-mega']],
+  [['Toxapex','toxapex'],['Garganacl','garganacl']],
+  [['Torkoal','torkoal'],['Mega Camerupt','camerupt-mega'],['Mega Sableye','sableye-mega']]
+];
+document.querySelectorAll('.benchmark-row').forEach((row,index)=>{
+  const mons=benchmarkSpriteRows[index];
+  const title=row.querySelector('.benchmark-copy h3');
+  if(!mons||!title)return;
+  const strip=document.createElement('div');
+  strip.className='benchmark-sprites';
+  strip.setAttribute('role','img');
+  strip.setAttribute('aria-label',title.textContent.trim());
+  mons.forEach(([name,slug])=>{
+    const img=document.createElement('img');
+    img.className='benchmark-sprite';
+    img.src=`https://play.pokemonshowdown.com/sprites/ani/${slug}.gif`;
+    img.alt='';
+    img.loading='lazy';
+    img.title=name;
+    img.onerror=function(){this.onerror=null;this.src=`https://play.pokemonshowdown.com/sprites/gen5/${slug}.png`;};
+    strip.appendChild(img);
+  });
+  title.classList.add('sr-only');
+  title.setAttribute('aria-hidden','true');
+  title.insertAdjacentElement('beforebegin',strip);
+});
 renderRoster();updateCalc();
 </script>
 
