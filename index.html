@@ -497,7 +497,7 @@
 <div class="method-card"><b>01</b><h3>Persistence baseline</h3><p>GCF and NAIC identify durable M-A kernels without being allowed to dictate a current-format tier by themselves.</p></div>
 <div class="method-card"><b>02</b><h3>Current conversion</h3><p>Smogon Major, Arena II, Encore, and Global control tier placement. An M-A shell is not promoted merely because it was once popular.</p></div>
 <div class="method-card"><b>03</b><h3>Family threshold</h3><p>Top-cut repetition, exact-six recurrence, field usage, and a distinct preview/lead tree determine whether a shell earns its own card.</p></div>
-<div class="method-card"><b>04</b><h3>Representative six</h3><p>Each ribbon shows the most useful representative roster, not a claim that every version uses the same six or sets.</p></div>
+<div class="method-card"><b>04</b><h3>Representative six</h3><p>Each ribbon is a useful representative roster. Its moves are an event-weighted profile for that specific archetype—not a claim that every branch carries one identical imported six.</p></div>
 </div>
 <div class="scope-note"><strong>Scope note.</strong> Regulation M-B began June 17 and added 22 Pokémon plus 16 Mega Evolutions. Historical M-A evidence is weighted as persistence data, while four M-B events drive the current-format tiers. Evidence refreshed July 28, 2026.</div>
 </div>
@@ -1244,7 +1244,7 @@
 </tr></tbody></table></div><div class="coverage-method"><strong>Method note.</strong> Recommendations combine the standard type-effectiveness chart with the six Pokémon shown on each archetype card and the likely Mega branch. They intentionally avoid pretending that one type can solve a full doubles matchup.</div></div></section></main>
 <footer class="sources"><div class="shell footer-grid">
 <div><strong>Evidence frame. </strong>Grand Champions Festival (6,109), North America International Championships (1,096 Masters), Smogon VGC Major (898), Champions Arena II (706), Grand Champions Festival Encore (4,254), and Global VGC Welcome Tour (414): 13,477 players total. GCF and NAIC establish persistence; the four M-B events control current tier placement. Smogon Major and Global VGC Welcome Tour are the highest-attendance eligible M-B replacements not already in the original six-event frame.</div>
-<div><strong>Rules and assets. </strong>Regulation dates and additions: official Pokémon Champions notices. Top-Mega panel: Pikalytics Regulation M-B S3 ranked data accessed July 28, 2026; species are ordered by monthly usage rank and filtered by each species’ Mega-stone share. The stone percentage is the share of that species holding the named Mega Stone, not total field usage. Animated sprites: Pokémon Showdown / Smogon community. Evidence refreshed July 28, 2026.</div>
+<div><strong>Rules, move profiles, and assets. </strong>Regulation dates and additions: official Pokémon Champions notices. Every move list is a context-specific Regulation M-B profile rebuilt from Pikalytics published-team event pages and current event move usage; it is not a generic species set or a claim that every branch uses an identical four moves. Top-Mega panel: Pikalytics Regulation M-B S3 ranked data accessed July 28, 2026; species are ordered by monthly usage rank and filtered by each species’ Mega-stone share. The stone percentage is the share of that species holding the named Mega Stone, not total field usage. Animated sprites: Pokémon Showdown / Smogon community. Move profiles refreshed July 28, 2026.</div>
 </div></footer>
 <div class="compare-dock" id="compareDock"><span class="compare-label">PINNED</span><div class="compare-items" id="compareItems"></div><button class="compare-action" id="compareOpen" type="button">Compare</button></div>
 <div aria-labelledby="comparisonTitle" aria-modal="true" class="comparison-modal" id="comparisonModal" role="dialog"><div class="comparison-sheet"><div class="comparison-head"><h2 id="comparisonTitle">Archetype comparison</h2><button class="close-modal" id="comparisonClose" type="button">Close</button></div><div class="comparison-grid" id="comparisonGrid"></div></div></div>
@@ -1267,7 +1267,7 @@
       '08':'Signal: Encore · Global Top 8',
       '09':'Signal: GCF legacy · Encore field',
       '10':'Signal: Smogon Major field · Arena II field · Global Top 2 hybrid rain',
-      '11':'Signal: GCF · M-A precursor · Arena II',
+      '11':'Signal: current M-B Perish Rain · Arena II rain-trap branch',
       '12':'Signal: GCF presence · Encore',
       '13':'Signal: Encore · Global Top 8 branch',
       '14':'Signal: Smogon Major field · Global Top 3',
@@ -1299,6 +1299,44 @@
       const target = document.querySelector(`#archetype-${id} .identity-callout p`);
       if (target) target.textContent = text;
     });
+    function refreshPerishRainCard() {
+      const card = document.getElementById('archetype-11');
+      if (!card) return;
+      const makeTile = ({name, types, sprite, mega=false}) => {
+        const typeList = types.join(',');
+        const megaSprite = mega ? `${sprite}-mega` : sprite;
+        return `<div class="mon-tile" data-base-types="${typeList}" data-mega-types="${typeList}" title="${name} — ${mega ? 'Mega candidate' : 'Core slot'}"><div class="mon-stage"><img alt="Animated ${name} sprite" class="mon-gif" data-base="https://play.pokemonshowdown.com/sprites/ani/${sprite}.gif" data-fallback="https://play.pokemonshowdown.com/sprites/gen5/${sprite}.png" data-mega="https://play.pokemonshowdown.com/sprites/ani/${megaSprite}.gif" decoding="async" loading="lazy" src="https://play.pokemonshowdown.com/sprites/ani/${megaSprite}.gif"/>${mega ? '<span class="mega-badge">MEGA</span>' : ''}</div><div class="mon-name">${name}</div><div aria-label="${name} typing" class="type-row"></div></div>`;
+      };
+      const members = [
+        {name:'Gengar',types:['Ghost','Poison'],sprite:'gengar',mega:true},
+        {name:'Politoed',types:['Water'],sprite:'politoed'},
+        {name:'Archaludon',types:['Steel','Dragon'],sprite:'archaludon'},
+        {name:'Swampert',types:['Water','Ground'],sprite:'swampert',mega:true},
+        {name:'Incineroar',types:['Fire','Dark'],sprite:'incineroar'},
+        {name:'Vivillon',types:['Bug','Flying'],sprite:'vivillon'}
+      ];
+      const title = 'Mega Gengar Perish Rain';
+      card.dataset.search = 'mega gengar perish rain specialist current regulation m-b rain trap vivillon politoed archaludon swampert incineroar shadow tag perish song sleep powder hurricane weather ball. the primary current gengar branch uses perish pressure alongside rain rather than generic trap balance. gengar politoed archaludon swampert incineroar vivillon';
+      card.querySelector('h3').textContent = title;
+      card.querySelector('.pin-button').setAttribute('aria-label', `Pin ${title}`);
+      card.querySelector('.roster-strip').innerHTML = members.map(makeTile).join('');
+      card.querySelector('.identity-callout p').textContent = 'The current Mega Gengar shell is Perish Rain: Shadow Tag and Perish Song create the pin, while Politoed, Mega Swampert, and Archaludon force active rain counterplay. Vivillon is the crucial upgrade—Sleep Powder, Rage Powder, and Hurricane give the trap plan both protection and a real tempo threat.';
+      const [variations, leads, prep] = card.querySelectorAll('.detail-block ul');
+      variations.innerHTML = '<li>Politoed is not decorative: Drizzle enables Weather Ball, supports Hurricane, and gives the shell a full rain mode when Perish is not the clean line.</li><li>Vivillon’s Sleep Powder and Rage Powder make the Perish count materially harder to navigate; do not treat it as a generic redirection slot.</li><li>Mega Gengar and Mega Swampert are the two credible selections, so the chosen four determines whether the game is a pin, rain-pressure, or hybrid endgame.</li>';
+      leads.innerHTML = '<li><span class="step-num">1</span><span>Gengar + Vivillon: establish the pin while redirecting, sleeping, or immediately forcing the Perish clock.</span></li><li><span class="step-num">2</span><span>Politoed + Archaludon or Swampert: demand a conventional rain answer before revealing the trap line.</span></li><li><span class="step-num">3</span><span>Gengar + Incineroar: Fake Out pressure creates a safe Perish or position-reset turn.</span></li>';
+      prep.innerHTML = '<li><span class="step-num">1</span><span>Bring both an answer to rain pressure and a plan for the Perish count; solving only one mode is not enough.</span></li><li><span class="step-num">2</span><span>Ghost types can escape Shadow Tag, but still need a safe line through Vivillon’s Sleep Powder and rain-speed pressure.</span></li><li><span class="step-num">3</span><span>Do not spend your anti-sleep resource before identifying whether Vivillon is enabling the Perish endgame or the rain attacker.</span></li>';
+      const tableLink = document.querySelector('.coverage-name a[href="#archetype-11"]');
+      if (tableLink) {
+        tableLink.textContent = title;
+        const row = tableLink.closest('tr');
+        row.cells[1].innerHTML = '<div class="coverage-types"><span class="type-chip type-dark attack-chip" title="Dark type"><span class="type-chip-mark">D</span><span>Dark</span></span><span class="type-chip type-grass attack-chip" title="Grass type"><span class="type-chip-mark">G</span><span>Grass</span></span><span class="type-chip type-electric attack-chip" title="Electric type"><span class="type-chip-mark">E</span><span>Electric</span></span></div>';
+        row.cells[2].innerHTML = '<div class="coverage-types"><span class="type-chip type-ghost defense-chip" title="Ghost type"><span class="type-chip-mark">G</span><span>Ghost</span></span><span class="type-chip type-water defense-chip" title="Water type"><span class="type-chip-mark">W</span><span>Water</span></span><span class="type-chip type-ground defense-chip" title="Ground type"><span class="type-chip-mark">G</span><span>Ground</span></span></div>';
+        row.querySelector('.coverage-note').textContent = 'Dark reliably pressures Gengar; Grass is the clean Mega Swampert answer; Electric pressures Politoed and Vivillon. Ghost typing can escape Shadow Tag, while Water- and Ground-resistant positioning must still account for rain damage and Vivillon disruption.';
+      }
+      const labOption = document.querySelector('#labArchetype option[value="11"]');
+      if (labOption) labOption.textContent = `11 — ${title}`;
+    }
+    refreshPerishRainCard();
     const fieldGroups = [
       ['must','Must prep',['02','07','03','04','08']],
       ['high','High priority',['01','05','06','09','10','12','14']],
@@ -1480,58 +1518,71 @@ Turn 4 condition: ${n.turn4||''}
 `;});
       const blob=new Blob([text],{type:'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='Regulation_M-B_Matchup_Notes.txt'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),500);
     });
-    const commonMoveSets = {
-      'A-Ninetales':['Aurora Veil','Blizzard','Moonblast','Protect'],
-      'Aerodactyl':['Rock Slide','Tailwind','Taunt','Protect'],
-      'Annihilape':['Rage Fist','Drain Punch','Bulk Up','Protect'],
-      'Archaludon':['Electro Shot','Flash Cannon','Draco Meteor','Protect'],
-      'Basculegion':['Wave Crash','Last Respects','Aqua Jet','Protect'],
-      'Blastoise':['Water Pulse','Aura Sphere','Ice Beam','Protect'],
-      'Blaziken':['Flare Blitz','Close Combat','Swords Dance','Protect'],
-      'Ceruledge':['Bitter Blade','Shadow Sneak','Swords Dance','Protect'],
-      'Charizard':['Heat Wave','Solar Beam','Weather Ball','Protect'],
-      'Delphox':['Heat Wave','Psychic','Dazzling Gleam','Protect'],
-      'Dragonite':['Extreme Speed','Dragon Claw','Ice Spinner','Protect'],
-      'Excadrill':['High Horsepower','Iron Head','Rock Slide','Protect'],
-      'Farigiraf':['Trick Room','Psychic','Helping Hand','Protect'],
-      'Floette':['Moonblast','Dazzling Gleam','Helping Hand','Protect'],
-      'Froslass':['Blizzard','Shadow Ball','Icy Wind','Protect'],
-      'Garchomp':['Earthquake','Dragon Claw','Rock Slide','Protect'],
-      'Gardevoir':['Hyper Voice','Moonblast','Psychic','Protect'],
-      'Gengar':['Shadow Ball','Sludge Bomb','Icy Wind','Protect'],
-      'Gholdengo':['Make It Rain','Shadow Ball','Power Gem','Protect'],
-      'Grimmsnarl':['Fake Out','Parting Shot','Spirit Break','Fake Tears'],
-      'H-Arcanine':['Rock Slide','Flare Blitz','Extreme Speed','Protect'],
-      'Incineroar':['Fake Out','Parting Shot','Flare Blitz','Knock Off'],
-      'Kingambit':['Sucker Punch','Kowtow Cleave','Iron Head','Protect'],
-      'Kommo-o':['Clanging Scales','Aura Sphere','Clangorous Soul','Protect'],
-      'Lycanroc-Dusk':['Rock Slide','Close Combat','Accelerock','Protect'],
-      'Maushold':['Follow Me','Beat Up','Population Bomb','Protect'],
-      'Metagross':['Meteor Mash','Zen Headbutt','Stomping Tantrum','Protect'],
-      'Milotic':['Scald','Ice Beam','Recover','Protect'],
-      'Pelipper':['Hurricane','Weather Ball','Tailwind','Protect'],
-      'Raichu':['Zap Cannon','Focus Blast','Fake Out','Protect'],
-      'Scovillain':['Overheat','Energy Ball','Spicy Extract','Protect'],
-      'Sinistcha':['Matcha Gotcha','Rage Powder','Strength Sap','Trick Room'],
-      'Sneasler':['Fake Out','Dire Claw','Close Combat','Quick Guard'],
-      'Staraptor':['Brave Bird','Close Combat','U-turn','Protect'],
-      'Swampert':['Wave Crash','Earthquake','Ice Punch','Protect'],
-      'Sylveon':['Hyper Voice','Moonblast','Quick Attack','Protect'],
-      'Talonflame':['Brave Bird','Tailwind','Will-O-Wisp','Protect'],
-      'Toxapex':['Baneful Bunker','Wide Guard','Infestation','Toxic'],
-      'Tyranitar':['Rock Slide','Knock Off','Low Kick','Protect'],
-      'Venusaur':['Sleep Powder','Giga Drain','Sludge Bomb','Protect'],
-      'Whimsicott':['Tailwind','Encore','Moonblast','Protect']
+    // These are archetype-specific profiles, not a global species lookup. The source field is
+    // intentionally retained on each profile so the visible card can be audited without implying
+    // that every team in the family has one exact, immutable six.
+    const archetypeMoveProfiles = {
+      'archetype-01': { source:'Regulation M-B Open League #1 / current published-team usage', sets:{
+        'Charizard':['Heat Wave','Weather Ball','Solar Beam','Protect'], 'Aerodactyl':['Rock Slide','Tailwind','Dual Wingbeat','Protect'], 'Farigiraf':['Trick Room','Thunderbolt','Twin Beam','Protect'], 'Garchomp':['Earthquake','Dragon Claw','Rock Slide','Protect'], 'Sylveon':['Hyper Voice','Hyper Beam','Quick Attack','Detect'], 'Kingambit':['Kowtow Cleave','Sucker Punch','Iron Head','Protect']
+      }},
+      'archetype-02': { source:'Smogon Major / current M-B Big Six published-team profile', sets:{
+        'Charizard':['Heat Wave','Weather Ball','Solar Beam','Protect'], 'Floette':['Moonblast','Dazzling Gleam','Light of Ruin','Protect'], 'Whimsicott':['Moonblast','Tailwind','Encore','Protect'], 'Garchomp':['Earthquake','Dragon Claw','Rock Slide','Protect'], 'Basculegion':['Wave Crash','Last Respects','Aqua Jet','Flip Turn'], 'Kingambit':['Kowtow Cleave','Sucker Punch','Iron Head','Protect']
+      }},
+      'archetype-03': { source:'Arena II / M-B setup balance published-team profile', sets:{
+        'Delphox':['Heat Wave','Psyshock','Nasty Plot','Protect'], 'Blastoise':['Shell Smash','Water Spout','Dark Pulse','Protect'], 'Sinistcha':['Matcha Gotcha','Rage Powder','Trick Room','Protect'], 'Sneasler':['Close Combat','Fake Out','Dire Claw','Protect'], 'Incineroar':['Fake Out','Flare Blitz','Parting Shot','Throat Chop'], 'Kingambit':['Kowtow Cleave','Sucker Punch','Iron Head','Protect']
+      }},
+      'archetype-04': { source:'Arena II / Open League #2 hybrid-weather published teams', sets:{
+        'Charizard':['Heat Wave','Weather Ball','Solar Beam','Protect'], 'Venusaur':['Sleep Powder','Sludge Bomb','Earth Power','Protect'], 'Grimmsnarl':['Reflect','Light Screen','Parting Shot','Spirit Break'], 'Pelipper':['Hurricane','Weather Ball','Tailwind','Wide Guard'], 'Archaludon':['Electro Shot','Dragon Pulse','Flash Cannon','Protect'], 'Basculegion':['Wave Crash','Last Respects','Aqua Jet','Flip Turn']
+      }},
+      'archetype-05': { source:'Current M-B bulky-sun published-team profile', sets:{
+        'Charizard':['Heat Wave','Weather Ball','Solar Beam','Protect'], 'Venusaur':['Sleep Powder','Sludge Bomb','Earth Power','Protect'], 'Garchomp':['Earthquake','Dragon Claw','Rock Slide','Protect'], 'Incineroar':['Fake Out','Flare Blitz','Parting Shot','Throat Chop'], 'Toxapex':['Infestation','Toxic','Wide Guard','Baneful Bunker'], 'Annihilape':['Phantom Force','Close Combat','Rock Tomb','Protect']
+      }},
+      'archetype-06': { source:'M-B pivot-core published teams / current event usage', sets:{
+        'Floette':['Moonblast','Dazzling Gleam','Calm Mind','Protect'], 'Sneasler':['Close Combat','Fake Out','Dire Claw','Protect'], 'Sinistcha':['Matcha Gotcha','Rage Powder','Strength Sap','Protect'], 'Incineroar':['Fake Out','Flare Blitz','Parting Shot','Throat Chop'], 'Kingambit':['Kowtow Cleave','Sucker Punch','Iron Head','Protect'], 'Garchomp':['Earthquake','Dragon Claw','Rock Slide','Protect']
+      }},
+      'archetype-07': { source:'Smogon Major dual-Mega published-team profile', sets:{
+        'Froslass':['Blizzard','Shadow Ball','Aurora Veil','Protect'], 'Scovillain':['Rage Powder','Leech Seed','Overheat','Protect'], 'Basculegion':['Wave Crash','Last Respects','Aqua Jet','Flip Turn'], 'Kingambit':['Kowtow Cleave','Sucker Punch','Iron Head','Protect'], 'Sneasler':['Close Combat','Fake Out','Dire Claw','Protect'], 'Lycanroc-Dusk':['Rock Slide','Accelerock','Close Combat','Protect']
+      }},
+      'archetype-08': { source:'Encore sand published-team profile', sets:{
+        'Tyranitar':['Rock Slide','Knock Off','High Horsepower','Protect'], 'Excadrill':['Earthquake','Iron Head','Rock Slide','Protect'], 'Staraptor':['Close Combat','Brave Bird','Tailwind','Protect'], 'Milotic':['Scald','Icy Wind','Haze','Protect'], 'Sinistcha':['Matcha Gotcha','Rage Powder','Strength Sap','Protect'], 'Gholdengo':['Make It Rain','Shadow Ball','Nasty Plot','Protect']
+      }},
+      'archetype-09': { source:'Current M-B Froslass fast-offense published-team profile', sets:{
+        'Froslass':['Blizzard','Shadow Ball','Aurora Veil','Protect'], 'Dragonite':['Dragon Claw','Extreme Speed','Low Kick','Protect'], 'Basculegion':['Wave Crash','Last Respects','Aqua Jet','Flip Turn'], 'Kingambit':['Kowtow Cleave','Sucker Punch','Iron Head','Protect'], 'Sneasler':['Close Combat','Fake Out','Dire Claw','Protect'], 'Milotic':['Scald','Icy Wind','Haze','Protect']
+      }},
+      'archetype-10': { source:'Arena II / current rain published-team profile', sets:{
+        'Swampert':['Wave Crash','Earthquake','Ice Punch','Protect'], 'Pelipper':['Hurricane','Weather Ball','Tailwind','Wide Guard'], 'Archaludon':['Electro Shot','Dragon Pulse','Flash Cannon','Protect'], 'Grimmsnarl':['Reflect','Light Screen','Parting Shot','Spirit Break'], 'Sinistcha':['Matcha Gotcha','Rage Powder','Strength Sap','Protect'], 'Metagross':['Iron Head','Psychic Fangs','Body Press','Protect']
+      }},
+      'archetype-11': { source:'Current M-B Perish Rain published-team profile', sets:{
+        'Gengar':['Perish Song','Shadow Ball','Sludge Bomb','Protect'], 'Politoed':['Weather Ball','Perish Song','Encore','Protect'], 'Archaludon':['Electro Shot','Flash Cannon','Dragon Pulse','Protect'], 'Swampert':['Wave Crash','Earthquake','Ice Punch','Protect'], 'Incineroar':['Fake Out','Flare Blitz','Parting Shot','Throat Chop'], 'Vivillon':['Rage Powder','Sleep Powder','Hurricane','Protect']
+      }},
+      'archetype-12': { source:'M-B screens published-team profile', sets:{
+        'A-Ninetales':['Aurora Veil','Blizzard','Freeze-Dry','Protect'], 'Gholdengo':['Make It Rain','Shadow Ball','Nasty Plot','Protect'], 'Staraptor':['Close Combat','Brave Bird','Tailwind','Protect'], 'Incineroar':['Fake Out','Flare Blitz','Parting Shot','Throat Chop'], 'Sinistcha':['Matcha Gotcha','Rage Powder','Strength Sap','Protect'], 'H-Arcanine':['Flare Blitz','Extreme Speed','Rock Slide','Protect']
+      }},
+      'archetype-13': { source:'M-B Gardevoir offense published-team profile', sets:{
+        'Gardevoir':['Hyper Voice','Psychic','Thunderbolt','Protect'], 'Basculegion':['Wave Crash','Last Respects','Aqua Jet','Flip Turn'], 'Talonflame':['Dual Wingbeat','Flare Blitz','Tailwind','Protect'], 'Maushold':['Follow Me','Encore','Feint','Protect'], 'Kingambit':['Kowtow Cleave','Sucker Punch','Iron Head','Protect'], 'Kommo-o':['Clanging Scales','Aura Sphere','Clangorous Soul','Protect']
+      }},
+      'archetype-14': { source:'M-B Metagross balance published-team profile', sets:{
+        'Metagross':['Iron Head','Psychic Fangs','Body Press','Protect'], 'Charizard':['Heat Wave','Weather Ball','Solar Beam','Protect'], 'Grimmsnarl':['Reflect','Light Screen','Parting Shot','Spirit Break'], 'Kingambit':['Kowtow Cleave','Sucker Punch','Iron Head','Protect'], 'Toxapex':['Infestation','Toxic','Wide Guard','Baneful Bunker'], 'Garchomp':['Earthquake','Dragon Claw','Rock Slide','Protect']
+      }},
+      'archetype-15': { source:'Encore anti-meta published-team profile', sets:{
+        'Blaziken':['Close Combat','Flare Blitz','Rock Slide','Detect'], 'Froslass':['Blizzard','Shadow Ball','Aurora Veil','Protect'], 'Dragonite':['Dragon Claw','Extreme Speed','Low Kick','Protect'], 'Toxapex':['Infestation','Toxic','Wide Guard','Baneful Bunker'], 'Sneasler':['Close Combat','Fake Out','Dire Claw','Protect'], 'Kingambit':['Kowtow Cleave','Sucker Punch','Iron Head','Protect']
+      }},
+      'archetype-16': { source:'Arena II Raichu Y balance published-team profile', sets:{
+        'Raichu':['Zap Cannon','Focus Blast','Fake Out','Protect'], 'Floette':['Moonblast','Dazzling Gleam','Light of Ruin','Protect'], 'Incineroar':['Fake Out','Flare Blitz','Parting Shot','Throat Chop'], 'Ceruledge':['Bitter Blade','Shadow Sneak','Bulk Up','Protect'], 'Sinistcha':['Matcha Gotcha','Rage Powder','Strength Sap','Protect'], 'Milotic':['Scald','Icy Wind','Haze','Protect']
+      }}
     };
-    function renderCommonMoveSets() {
+    function renderArchetypeMoveProfiles() {
       document.querySelectorAll('.mon-tile').forEach(tile => {
         const name = tile.querySelector('.mon-name')?.textContent.trim();
-        const moves = commonMoveSets[name];
+        const card = tile.closest('.archetype-card');
+        const profile = archetypeMoveProfiles[card?.id];
+        const moves = profile?.sets?.[name];
         const typeRow = tile.querySelector('.type-row');
         if (!moves || !typeRow || tile.querySelector('.moveset')) return;
         const moveset = document.createElement('div');
         moveset.className = 'moveset';
-        moveset.setAttribute('aria-label', `Common Regulation M-B moves for ${name}`);
+        moveset.setAttribute('aria-label', `Archetype-profiled Regulation M-B moves for ${name}`);
+        moveset.title = `${profile.source}. Representative archetype profile; not a claim that every version carries these exact four moves.`;
         moves.forEach(move => {
           const item = document.createElement('span');
           item.textContent = move;
@@ -1541,7 +1592,7 @@ Turn 4 condition: ${n.turn4||''}
       });
     }
     renderRosterTypes();
-    renderCommonMoveSets();
+    renderArchetypeMoveProfiles();
     loadCurrent(); renderNotes();
   </script>
 </body>
