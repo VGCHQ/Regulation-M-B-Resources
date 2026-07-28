@@ -10,11 +10,16 @@
     justify-content: center;
     gap: 10px;
     padding: 12px 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     background: #101722;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .site-nav a {
+    display: block;
+    flex: 0 0 auto;
+    white-space: nowrap;
     padding: 8px 14px;
     color: #dce7f5;
     text-decoration: none;
@@ -410,6 +415,18 @@
   .type-chip { border:1px solid #aaa; background:#f5f5f5; }
   .coverage-note { color:#333; }
 }
+</style>
+<style id="johto-cartridge-theme">
+  :root{--johto-paper:#f3edc9;--johto-cream:#fff9db;--johto-ink:#193426;--johto-green:#527348;--johto-lcd:#acc28b;--johto-red:#ba3d39;--bg:var(--johto-paper);--bg-2:var(--johto-cream);--panel:var(--johto-cream);--panel-2:var(--johto-paper);--text:var(--johto-ink);--soft:#294635;--muted:#4d684f;--gold:#8b6221;--cyan:#2d725d;--violet:#5b6851;--coral:var(--johto-red);--green:#3f7b47;--line:rgba(25,52,38,.26);--line-strong:rgba(25,52,38,.54)}
+  html{background:var(--johto-paper)} body{color:var(--johto-ink)!important;background:linear-gradient(90deg,rgba(25,52,38,.055) 1px,transparent 1px),linear-gradient(rgba(25,52,38,.055) 1px,transparent 1px),var(--johto-paper)!important;background-size:8px 8px!important;font-family:"Courier New",ui-monospace,monospace!important;font-weight:700!important;letter-spacing:.01em} body:before,body::before{opacity:.14!important;background-image:linear-gradient(90deg,transparent 49%,rgba(25,52,38,.48) 50%),linear-gradient(transparent 49%,rgba(25,52,38,.48) 50%)!important;background-size:8px 8px!important}
+  h1,h2,h3,h4,h5,h6,.hero h1,.hero h2{color:var(--johto-ink)!important;font-family:"Arial Black","Courier New",ui-monospace,monospace!important;font-weight:900!important;letter-spacing:-.045em!important;text-shadow:1px 1px 0 var(--johto-lcd)!important} h1 *,h2 *,h3 *,h4 *,h5 *,h6 *{color:inherit!important;-webkit-text-stroke:0!important} p,li,td,dd,dt,label,small,.hero-copy,.section-head p,.muted{color:#294635!important;font-weight:700!important} strong,b,.brand,.kicker,.eyebrow{font-weight:900!important}
+  .site-nav{justify-content:center!important;background:var(--johto-ink)!important;border-bottom:4px solid var(--johto-green)!important;box-shadow:0 4px 0 var(--johto-lcd)!important}.site-nav a{color:var(--johto-cream)!important;background:transparent!important;border:2px solid var(--johto-lcd)!important;border-radius:0!important;font-weight:900!important;letter-spacing:.035em!important}.site-nav a:hover,.site-nav a[aria-current="page"]{color:var(--johto-cream)!important;background:var(--johto-red)!important;border-color:var(--johto-cream)!important}
+  .topbar,.matrix-controls{background:rgba(243,237,201,.96)!important;border-color:var(--johto-green)!important;backdrop-filter:none!important}.topnav a,header nav a{color:var(--johto-ink)!important;font-weight:900!important}.topnav a:hover,header nav a:hover{color:var(--johto-red)!important;background:var(--johto-lcd)!important}
+  .hero-panel,.hero-card,.mega-card,.benchmark,.scarf-card,.tier-card,.insight,.table-panel,.calc-card,.mechanic,.source-box,.matrix-shell,.help-card,.context-card,.input-shell,.result-panel,.score-card,.slot,.help-box,.loop-card,.archetype-card,.event-card,.trend-card,.workflow-card,.method-card,.prep-block,.lab-panel,.comparison-sheet{color:var(--johto-ink)!important;background:var(--johto-cream)!important;border:3px solid var(--johto-green)!important;border-radius:0!important;box-shadow:4px 4px 0 var(--johto-lcd)!important}.hero-panel *, .hero-card *, .mega-card *, .benchmark *, .scarf-card *, .tier-card *, .insight *, .table-panel *, .calc-card *, .mechanic *, .source-box *, .matrix-shell *, .help-card *, .context-card *, .input-shell *, .result-panel *, .score-card *, .slot *, .help-box *, .loop-card *, .archetype-card *, .event-card *, .trend-card *, .workflow-card *, .method-card *, .prep-block *, .lab-panel *, .comparison-sheet *{border-color:var(--johto-green)!important}
+  .badge,.type-pill,.type-chip,.type,.tier,.mini-flag,.attack-chip,.defense-chip{color:var(--johto-ink)!important;background:var(--johto-lcd)!important;border:2px solid var(--johto-green)!important;border-radius:0!important;font-weight:900!important}.hero-number,.benchmark-value,.calc-result,.share,.value-hot,.value-cyan,.usage-count{color:var(--johto-red)!important;font-weight:900!important;text-shadow:none!important}
+  button,.btn,.control,.control-btn,.mini-btn,.primary-btn{color:var(--johto-cream)!important;background:var(--johto-ink)!important;border:2px solid var(--johto-green)!important;border-radius:0!important;font-family:"Courier New",ui-monospace,monospace!important;font-weight:900!important;box-shadow:2px 2px 0 var(--johto-lcd)!important}button:hover,.btn:hover,.control:hover,.control-btn:hover,.mini-btn:hover,.primary-btn:hover{color:var(--johto-cream)!important;background:var(--johto-red)!important;border-color:var(--johto-ink)!important}input,select,textarea,.team-input{color:var(--johto-ink)!important;background:var(--johto-cream)!important;border:2px solid var(--johto-green)!important;border-radius:0!important;font-family:"Courier New",ui-monospace,monospace!important;font-weight:700!important}input:focus,select:focus,textarea:focus{outline:3px solid var(--johto-red)!important;outline-offset:2px!important;box-shadow:none!important}
+  th{color:var(--johto-cream)!important;background:var(--johto-ink)!important;border-color:var(--johto-green)!important;font-weight:900!important}td,.matrix td{color:var(--johto-ink)!important;background:rgba(255,249,219,.72)!important;border-color:rgba(25,52,38,.26)!important;font-weight:700!important}tr:hover td{background:var(--johto-lcd)!important}.status,.callout,.method,.note{color:var(--johto-ink)!important;background:var(--johto-lcd)!important;border-color:var(--johto-green)!important}.status.warning{background:#f4d986!important;border-color:var(--johto-red)!important}.status.error{background:#efb4a8!important;border-color:var(--johto-red)!important}
+  @media(max-width:640px){.site-nav{justify-content:flex-start!important}.site-nav a{font-size:.72rem!important;padding:7px 9px!important}}
 </style></head>
 <body>
 <nav class="site-nav" aria-label="Guide navigation">
