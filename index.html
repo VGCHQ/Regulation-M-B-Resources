@@ -443,6 +443,67 @@
   .moveset{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px;margin-top:7px}.moveset span{display:flex;align-items:center;justify-content:center;min-height:22px;padding:3px 2px;color:#24402d!important;background:#fffbe3!important;border:1px solid #8da874!important;border-radius:0!important;font-family:"Courier New",ui-monospace,monospace!important;font-size:.5rem!important;font-weight:900!important;line-height:1.08!important;text-align:center;text-shadow:none!important}@media(max-width:680px){.moveset{grid-template-columns:1fr;gap:2px;margin-top:5px}.moveset span{min-height:18px;font-size:.46rem!important}}
 </style>
 <link href="./site-theme.css" rel="stylesheet"/>
+<style id="item-badge-and-priority-contrast">
+  /* High-contrast preparation labels */
+  .field-column { background: rgba(13, 20, 32, .92) !important; }
+  .field-column h3 {
+    display: inline-flex !important;
+    align-items: center;
+    min-height: 29px;
+    margin: 0 0 14px !important;
+    padding: 6px 10px;
+    border-radius: 8px;
+    color: #081019 !important;
+    font-size: .72rem !important;
+    letter-spacing: .1em !important;
+    line-height: 1.1;
+    box-shadow: 0 6px 18px rgba(0,0,0,.22);
+  }
+  .field-column.must h3 { background: #ff8279 !important; }
+  .field-column.high h3 { background: #75dcff !important; }
+  .field-column.specialist h3 { background: #c5a6ff !important; }
+  .eyebrow {
+    display: inline-flex;
+    width: max-content;
+    padding: 4px 7px;
+    border-radius: 6px;
+    color: #071019 !important;
+    background: var(--tier-color) !important;
+    font-size: .61rem !important;
+    line-height: 1;
+    text-shadow: none !important;
+  }
+
+  /* Representative held-item icon on each roster sprite */
+  .item-badge {
+    position: absolute;
+    z-index: 4;
+    left: 5px;
+    bottom: 5px;
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    padding: 2px;
+    border: 1px solid rgba(255,255,255,.26);
+    border-radius: 8px;
+    background: rgba(5, 9, 16, .9);
+    box-shadow: 0 5px 13px rgba(0,0,0,.42);
+    backdrop-filter: blur(5px);
+  }
+  .item-badge img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+  .item-badge:hover { transform: scale(1.14); border-color: rgba(255,255,255,.72); }
+  @media (max-width: 620px) {
+    .item-badge { width: 22px; height: 22px; left: 4px; bottom: 4px; border-radius: 7px; }
+    .field-column h3 { font-size: .66rem !important; padding: 6px 8px; }
+  }
+</style>
 </head>
 <body>
 <nav class="site-nav" aria-label="Guide navigation">
@@ -1632,6 +1693,89 @@ Turn 4 condition: ${n.turn4||''}
         'Charizard':['Heat Wave','Weather Ball','Solar Beam','Protect'], 'Garchomp':['Earthquake','Dragon Claw','Rock Slide','Protect'], 'Kingambit':['Kowtow Cleave','Sucker Punch','Iron Head','Protect'], 'Incineroar':['Fake Out','Flare Blitz','Parting Shot','Throat Chop'], 'Sinistcha':['Matcha Gotcha','Rage Powder','Strength Sap','Protect'], 'Basculegion':['Wave Crash','Last Respects','Aqua Jet','Flip Turn']
       }}
     };
+    // The guide shows one representative item profile per archetype card. Item icons are
+    // intentionally scoped to each published/current profile, not treated as universal species sets.
+    const itemIconUrls = {
+      'Charizardite Y':'https://raw.githubusercontent.com/msikma/pokesprite/master/items/mega-stone/charizardite-y.png',
+      'Aerodactylite':'https://raw.githubusercontent.com/msikma/pokesprite/master/items/mega-stone/aerodactylite.png',
+      'Blastoisinite':'https://raw.githubusercontent.com/msikma/pokesprite/master/items/mega-stone/blastoisinite.png',
+      'Blazikenite':'https://raw.githubusercontent.com/msikma/pokesprite/master/items/mega-stone/blazikenite.png',
+      'Gardevoirite':'https://raw.githubusercontent.com/msikma/pokesprite/master/items/mega-stone/gardevoirite.png',
+      'Gengarite':'https://raw.githubusercontent.com/msikma/pokesprite/master/items/mega-stone/gengarite.png',
+      'Metagrossite':'https://raw.githubusercontent.com/msikma/pokesprite/master/items/mega-stone/metagrossite.png',
+      'Swampertite':'https://raw.githubusercontent.com/msikma/pokesprite/master/items/mega-stone/swampertite.png',
+      'Tyranitarite':'https://raw.githubusercontent.com/msikma/pokesprite/master/items/mega-stone/tyranitarite.png',
+      'Venusaurite':'https://raw.githubusercontent.com/msikma/pokesprite/master/items/mega-stone/venusaurite.png',
+      'Focus Sash':'https://play.pokemonshowdown.com/sprites/itemicons/focus-sash.png',
+      'Life Orb':'https://play.pokemonshowdown.com/sprites/itemicons/life-orb.png',
+      'Sitrus Berry':'https://play.pokemonshowdown.com/sprites/itemicons/sitrus-berry.png',
+      'Leftovers':'https://play.pokemonshowdown.com/sprites/itemicons/leftovers.png',
+      'Black Glasses':'https://play.pokemonshowdown.com/sprites/itemicons/blackglasses.png',
+      'Charcoal':'https://play.pokemonshowdown.com/sprites/itemicons/charcoal.png',
+      'Choice Scarf':'https://play.pokemonshowdown.com/sprites/itemicons/choice-scarf.png',
+      'Light Clay':'https://play.pokemonshowdown.com/sprites/itemicons/light-clay.png',
+      'Damp Rock':'https://play.pokemonshowdown.com/sprites/itemicons/damp-rock.png',
+      'White Herb':'https://play.pokemonshowdown.com/sprites/itemicons/white-herb.png',
+      'Lum Berry':'https://play.pokemonshowdown.com/sprites/itemicons/lum-berry.png',
+      'Mental Herb':'https://play.pokemonshowdown.com/sprites/itemicons/mental-herb.png',
+      'Soft Sand':'https://play.pokemonshowdown.com/sprites/itemicons/soft-sand.png',
+      'Coba Berry':'https://play.pokemonshowdown.com/sprites/itemicons/coba-berry.png',
+      'Kasib Berry':'https://play.pokemonshowdown.com/sprites/itemicons/kasib-berry.png',
+      'Colbur Berry':'https://play.pokemonshowdown.com/sprites/itemicons/colbur-berry.png',
+      'Rocky Helmet':'https://play.pokemonshowdown.com/sprites/itemicons/rocky-helmet.png',
+      'Mystic Water':'https://play.pokemonshowdown.com/sprites/itemicons/mystic-water.png',
+      'Fairy Feather':'https://i.pokebase.app/pokemon-champions/x2NwRdU_fjkvWAx0bctWJ.png?height=128&width=128',
+      'Floettite':'https://i.pokebase.app/pokemon-champions/DPmFJBuJ0cwx-Vty_9xM7.png?height=128&width=128',
+      'Froslassite':'https://i.pokebase.app/pokemon-champions/khT6zigoeP9xKq8skA6an.png?height=128&width=128',
+      'Delphoxite':'https://i.pokebase.app/pokemon-champions/1lk7pXPm5Sbadw_UOzVH5.png?height=128&width=128',
+      'Scovillainite':'https://i.pokebase.app/pokemon-champions/T--qjJdMpvt--_hC6zlRS.png?height=128&width=128',
+      'Staraptite':'https://i.pokebase.app/pokemon-champions/Ot6Pna1hVnVdeRTyiuBQV.png?height=128&width=128',
+      'Dragoninite':'https://i.pokebase.app/pokemon-champions/UP1p0Vur2n_c0m0aLY0vk.png?height=128&width=128',
+      'Raichunite Y':'https://assets.pokemon-zone.com/champions-assets/uicontents/scriptableobject/mdicon02/ui_ItemIcon_02_2636.webp'
+    };
+    const archetypeItemProfiles = {
+      'archetype-01': { 'Charizard':'Charizardite Y', 'Aerodactyl':'Focus Sash', 'Farigiraf':'Sitrus Berry', 'Garchomp':'Life Orb', 'Sylveon':'Fairy Feather', 'Kingambit':'Black Glasses' },
+      'archetype-02': { 'Charizard':'Charizardite Y', 'Floette':'Floettite', 'Whimsicott':'Focus Sash', 'Garchomp':'Choice Scarf', 'Basculegion':'Mystic Water', 'Kingambit':'Black Glasses' },
+      'archetype-03': { 'Delphox':'Delphoxite', 'Blastoise':'Blastoisinite', 'Sinistcha':'Sitrus Berry', 'Sneasler':'White Herb', 'Incineroar':'Charcoal', 'Kingambit':'Black Glasses' },
+      'archetype-04': { 'Charizard':'Charizardite Y', 'Venusaur':'Venusaurite', 'Grimmsnarl':'Light Clay', 'Pelipper':'Damp Rock', 'Archaludon':'Sitrus Berry', 'Basculegion':'Mystic Water' },
+      'archetype-05': { 'Charizard':'Charizardite Y', 'Venusaur':'Venusaurite', 'Garchomp':'Life Orb', 'Incineroar':'Charcoal', 'Toxapex':'Rocky Helmet', 'Annihilape':'Lum Berry' },
+      'archetype-06': { 'Floette':'Floettite', 'Sneasler':'White Herb', 'Sinistcha':'Sitrus Berry', 'Incineroar':'Charcoal', 'Kingambit':'Black Glasses', 'Garchomp':'Choice Scarf' },
+      'archetype-07': { 'Froslass':'Froslassite', 'Scovillain':'Scovillainite', 'Basculegion':'Mystic Water', 'Kingambit':'Black Glasses', 'Sneasler':'White Herb', 'Lycanroc-Dusk':'Focus Sash' },
+      'archetype-08': { 'Tyranitar':'Tyranitarite', 'Excadrill':'Life Orb', 'Staraptor':'Staraptite', 'Milotic':'Leftovers', 'Sinistcha':'Sitrus Berry', 'Gholdengo':'Choice Scarf' },
+      'archetype-09': { 'Froslass':'Froslassite', 'Dragonite':'Dragoninite', 'Basculegion':'Mystic Water', 'Kingambit':'Black Glasses', 'Sneasler':'White Herb', 'Milotic':'Leftovers' },
+      'archetype-10': { 'Swampert':'Swampertite', 'Pelipper':'Damp Rock', 'Archaludon':'Sitrus Berry', 'Grimmsnarl':'Light Clay', 'Sinistcha':'Kasib Berry', 'Metagross':'Metagrossite' },
+      'archetype-11': { 'Gengar':'Gengarite', 'Floette':'Floettite', 'Kommo-o':'Lum Berry', 'Incineroar':'Charcoal', 'Sneasler':'White Herb', 'Kingambit':'Black Glasses' },
+      'archetype-12': { 'A-Ninetales':'Light Clay', 'Gholdengo':'Choice Scarf', 'Staraptor':'Staraptite', 'Incineroar':'Charcoal', 'Sinistcha':'Kasib Berry', 'H-Arcanine':'Focus Sash' },
+      'archetype-13': { 'Gardevoir':'Gardevoirite', 'Basculegion':'Mystic Water', 'Talonflame':'Focus Sash', 'Maushold':'Mental Herb', 'Kingambit':'Black Glasses', 'Kommo-o':'Lum Berry' },
+      'archetype-14': { 'Metagross':'Metagrossite', 'Charizard':'Charizardite Y', 'Grimmsnarl':'Light Clay', 'Kingambit':'Black Glasses', 'Toxapex':'Rocky Helmet', 'Garchomp':'Life Orb' },
+      'archetype-15': { 'Blaziken':'Blazikenite', 'Froslass':'Froslassite', 'Dragonite':'Dragoninite', 'Toxapex':'Rocky Helmet', 'Sneasler':'White Herb', 'Kingambit':'Black Glasses' },
+      'archetype-16': { 'Raichu':'Raichunite Y', 'Floette':'Floettite', 'Incineroar':'Sitrus Berry', 'Ceruledge':'Colbur Berry', 'Sinistcha':'Kasib Berry', 'Milotic':'Leftovers' }
+    };
+    function renderRosterItems() {
+      document.querySelectorAll('.archetype-card .mon-tile').forEach(tile => {
+        const card = tile.closest('.archetype-card');
+        const name = tile.querySelector('.mon-name')?.textContent.trim();
+        const item = archetypeItemProfiles[card?.id]?.[name];
+        const stage = tile.querySelector('.mon-stage');
+        if (!item || !stage || stage.querySelector('.item-badge')) return;
+        const icon = itemIconUrls[item];
+        if (!icon) return;
+        const badge = document.createElement('span');
+        badge.className = 'item-badge';
+        badge.setAttribute('role', 'img');
+        badge.setAttribute('aria-label', `${name}: representative held item ${item}`);
+        badge.title = `${item} · representative item in this archetype profile`;
+        const img = document.createElement('img');
+        img.src = icon;
+        img.alt = '';
+        img.decoding = 'async';
+        img.loading = 'lazy';
+        img.addEventListener('error', () => { badge.style.display = 'none'; }, {once:true});
+        badge.appendChild(img);
+        stage.appendChild(badge);
+      });
+    }
+
     function renderArchetypeMoveProfiles() {
       document.querySelectorAll('.mon-tile').forEach(tile => {
         const name = tile.querySelector('.mon-name')?.textContent.trim();
@@ -1654,6 +1798,7 @@ Turn 4 condition: ${n.turn4||''}
     }
     renderRosterTypes();
     renderArchetypeMoveProfiles();
+    renderRosterItems();
     loadCurrent(); renderNotes();
   </script>
 </body>
