@@ -522,6 +522,164 @@
     .field-column h3 { font-size: .66rem !important; padding: 6px 8px; }
   }
 </style>
+<style id="regmb-night-redesign">
+  :root {
+    --bg: #080b12 !important;
+    --bg-2: #0d1320 !important;
+    --panel: #111827 !important;
+    --panel-2: #0b111c !important;
+    --line: rgba(164, 185, 214, .16) !important;
+    --line-strong: rgba(164, 185, 214, .32) !important;
+    --text: #f3f6fb !important;
+    --soft: #c7d1e0 !important;
+    --muted: #91a0b5 !important;
+    --gold: #f2c76b !important;
+    --cyan: #73d9ff !important;
+    --violet: #b89bff !important;
+    --coral: #ff8178 !important;
+    --green: #75e0b2 !important;
+    --johto-paper: #080b12 !important;
+    --johto-cream: #111827 !important;
+    --johto-ink: #f3f6fb !important;
+    --johto-green: #73d9ff !important;
+    --johto-lcd: #182235 !important;
+    --johto-red: #ff8178 !important;
+  }
+  html { background: #080b12 !important; }
+  body {
+    color: var(--text) !important;
+    background:
+      radial-gradient(circle at 12% -12%, rgba(115,217,255,.13), transparent 31%),
+      radial-gradient(circle at 88% 0%, rgba(184,155,255,.12), transparent 30%),
+      linear-gradient(180deg, #080b12 0%, #0b101a 48%, #080b12 100%) !important;
+    font-family: "Aptos", "Inter", "Segoe UI", system-ui, sans-serif !important;
+    font-weight: 500 !important;
+  }
+  body::before { opacity: .13 !important; background-size: 42px 42px !important; }
+  body p, body li, body td, body dd, body dt, body label, body small,
+  body .hero-copy, body .section-head p, body .muted {
+    color: var(--soft) !important;
+    font-weight: 500 !important;
+  }
+  body h1, body h2, body h3, body h4, body h5, body h6,
+  body .hero h1, body .hero h2 { color: var(--text) !important; text-shadow: none !important; }
+  body .brand-text span, body .source-line, body .mon-name { color: var(--muted) !important; }
+  body .site-nav {
+    background: rgba(8,11,18,.92) !important;
+    border-bottom: 1px solid var(--line) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25) !important;
+  }
+  body .site-nav a {
+    color: var(--muted) !important;
+    background: transparent !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+  }
+  body .site-nav a:hover, body .site-nav a[aria-current="page"] {
+    color: #071019 !important;
+    background: var(--cyan) !important;
+    border-color: var(--cyan) !important;
+  }
+  body .topbar { background: rgba(8,11,18,.86) !important; border-color: var(--line) !important; }
+  body .topnav a { color: var(--muted) !important; }
+  body .topnav a:hover { color: var(--text) !important; background: rgba(115,217,255,.10) !important; }
+  body .hero-panel, body .hero-card, body .mega-card, body .benchmark, body .scarf-card,
+  body .tier-card, body .insight, body .table-panel, body .calc-card, body .mechanic,
+  body .source-box, body .matrix-shell, body .help-card, body .context-card,
+  body .input-shell, body .result-panel, body .score-card, body .slot, body .help-box,
+  body .loop-card, body .archetype-card, body .event-card, body .trend-card,
+  body .workflow-card, body .method-card, body .prep-block, body .lab-panel,
+  body .comparison-sheet {
+    color: var(--text) !important;
+    background: linear-gradient(145deg, rgba(18,27,43,.98), rgba(9,14,24,.98)) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 18px 48px rgba(0,0,0,.26) !important;
+  }
+  body .hero-panel *, body .hero-card *, body .mega-card *, body .benchmark *,
+  body .scarf-card *, body .tier-card *, body .insight *, body .table-panel *,
+  body .calc-card *, body .mechanic *, body .source-box *, body .matrix-shell *,
+  body .help-card *, body .context-card *, body .input-shell *, body .result-panel *,
+  body .score-card *, body .slot *, body .help-box *, body .loop-card *,
+  body .archetype-card *, body .event-card *, body .trend-card *, body .workflow-card *,
+  body .method-card *, body .prep-block *, body .lab-panel *, body .comparison-sheet * {
+    border-color: var(--line) !important;
+  }
+  body .field-map { align-items: stretch; }
+  body .field-map .field-column {
+    color: var(--soft) !important;
+    background: linear-gradient(160deg, #121b2b, #0d1421) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 14px 36px rgba(0,0,0,.22) !important;
+  }
+  body .field-map .field-column h3 {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-height: 34px !important;
+    margin: 0 0 15px !important;
+    padding: 7px 10px !important;
+    text-align: center !important;
+    border-radius: 9px !important;
+    font-size: .72rem !important;
+    letter-spacing: .12em !important;
+    text-shadow: none !important;
+  }
+  body .field-map .field-column.must h3 { color: #ffd0cc !important; background: rgba(255,129,120,.18) !important; border: 1px solid rgba(255,129,120,.55) !important; }
+  body .field-map .field-column.high h3 { color: #c5f1ff !important; background: rgba(115,217,255,.16) !important; border: 1px solid rgba(115,217,255,.52) !important; }
+  body .field-map .field-column.specialist h3 { color: #e1d4ff !important; background: rgba(184,155,255,.17) !important; border: 1px solid rgba(184,155,255,.55) !important; }
+  body .field-map .field-column a { color: var(--soft) !important; border-color: rgba(164,185,214,.12) !important; }
+  body .field-map .field-column a:hover { color: var(--text) !important; background: rgba(115,217,255,.07) !important; }
+  body .field-map .field-column a span { color: var(--muted) !important; }
+  body .workflow-card { background: linear-gradient(145deg, #121b2b, #0d1421) !important; }
+  body .workflow-card b { color: var(--gold) !important; }
+  body .workflow-card p { color: var(--soft) !important; }
+  body .controls-wrap { background: linear-gradient(180deg, rgba(8,11,18,.98), rgba(8,11,18,.72), transparent) !important; }
+  body .controls { background: rgba(13,19,31,.94) !important; border-color: var(--line) !important; box-shadow: 0 14px 36px rgba(0,0,0,.25) !important; }
+  body .search input, body input, body select, body textarea, body .team-input { color: var(--text) !important; background: #0b111c !important; border-color: var(--line) !important; }
+  body .control-btn, body button, body .btn, body .primary-btn { color: var(--soft) !important; background: rgba(255,255,255,.045) !important; border-color: var(--line) !important; box-shadow: none !important; }
+  body .control-btn:hover, body .control-btn.active, body button:hover, body .btn:hover, body .primary-btn:hover { color: var(--text) !important; background: rgba(115,217,255,.12) !important; border-color: rgba(115,217,255,.45) !important; }
+  body .archetype-card { background: linear-gradient(145deg, #121b2b, #0b111c) !important; }
+  body .archetype-card:hover { border-color: var(--line-strong) !important; box-shadow: 0 24px 64px rgba(0,0,0,.34) !important; }
+  body .card-title-wrap { text-align: center !important; }
+  body .card-head h3 { color: var(--text) !important; text-align: center !important; }
+  body .eyebrow { margin-inline: auto !important; color: #071019 !important; background: var(--tier-color) !important; border: 1px solid transparent !important; border-radius: 7px !important; text-align: center !important; }
+  body .archetype-card.tier-must .eyebrow { color: #2b1110 !important; background: #ffaaa2 !important; border-color: #ff8178 !important; }
+  body .archetype-card.tier-high .eyebrow { color: #062334 !important; background: #a9eaff !important; border-color: #73d9ff !important; }
+  body .archetype-card.tier-specialist .eyebrow { color: #211233 !important; background: #d0bcff !important; border-color: #b89bff !important; }
+  body .card-number { color: var(--tier-color) !important; }
+  body .mon-stage { background: radial-gradient(circle at 50% 40%, rgba(115,217,255,.10), rgba(255,255,255,.025) 68%) !important; border-color: var(--line) !important; }
+  body .mon-name, body .identity-callout p, body .clean-list li, body .mode-list li { color: var(--soft) !important; }
+  body .identity-callout { background: rgba(115,217,255,.045) !important; border-color: var(--line) !important; }
+  body .identity-callout span, body .detail-icon, body .step-num { color: var(--tier-color) !important; }
+  body .card-toggle { color: var(--muted) !important; background: rgba(255,255,255,.03) !important; }
+  body .card-toggle:hover { color: var(--text) !important; background: rgba(115,217,255,.09) !important; }
+  body .coverage-table th { color: #09121c !important; background: #a9eaff !important; border-color: rgba(115,217,255,.35) !important; }
+  body .coverage-table td { color: var(--soft) !important; background: rgba(13,19,31,.88) !important; border-color: var(--line) !important; }
+  body .coverage-table tr:hover td { background: rgba(115,217,255,.08) !important; }
+  body .coverage-name a, body .coverage-note { color: var(--soft) !important; }
+  body .coverage-number { color: var(--gold) !important; }
+  body .type-chip { color: var(--soft) !important; background: rgba(255,255,255,.045) !important; border-color: var(--line) !important; }
+  body .type-chip > span:last-child { color: var(--soft) !important; }
+  body .type-chip-mark { background: transparent !important; border: 0 !important; font-size: 0 !important; }
+  body .type-chip-icon { display: block !important; width: 30px !important; height: 10px !important; object-fit: contain !important; }
+  body .compare-dock { background: rgba(11,17,28,.96) !important; border-color: var(--line-strong) !important; }
+  body .compare-chip { color: var(--soft) !important; background: rgba(255,255,255,.045) !important; border-color: var(--line) !important; }
+  body .compare-action { color: #071019 !important; background: var(--gold) !important; }
+  body .sources { color: var(--muted) !important; }
+  body .sources strong { color: var(--soft) !important; }
+  body .type-row { justify-content: center !important; gap: 3px !important; min-height: 14px; }
+  body .type-mini { display: inline-flex !important; width: 39px !important; height: 11px !important; padding: 0 !important; background: transparent !important; border: 0 !important; border-radius: 2px !important; overflow: hidden !important; }
+  body .type-mini .type-icon { display: block !important; width: 100% !important; height: 100% !important; object-fit: contain !important; }
+  @media (max-width: 680px) {
+    body .card-title-wrap { grid-column: 1 / -1; }
+    body .card-head { grid-template-columns: 34px 1fr 34px; gap: 8px; padding: 16px 14px 12px; }
+    body .type-mini { width: 34px !important; height: 10px !important; }
+    body .field-map .field-column h3 { font-size: .65rem !important; }
+  }
+</style>
 </head>
 <body>
 <nav class="site-nav" aria-label="Guide navigation">
@@ -1500,14 +1658,31 @@
 
 
     const typeAbbr = {Normal:'NOR',Fire:'FIR',Water:'WAT',Electric:'ELE',Grass:'GRA',Ice:'ICE',Fighting:'FIG',Poison:'POI',Ground:'GRO',Flying:'FLY',Psychic:'PSY',Bug:'BUG',Rock:'ROC',Ghost:'GHO',Dragon:'DRA',Dark:'DAR',Steel:'STE',Fairy:'FAI'};
+    // Official in-game type badges from the Pokémon Sword/Shield asset set, hosted by PokéAPI.
+    const typeIconIds = {Normal:1,Fighting:2,Flying:3,Poison:4,Ground:5,Rock:6,Bug:7,Ghost:8,Steel:9,Fire:10,Water:11,Grass:12,Electric:13,Psychic:14,Ice:15,Dragon:16,Dark:17,Fairy:18};
+    const typeIconBase = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/';
+    const typeIconUrl = type => typeIconIds[type] ? `${typeIconBase}${typeIconIds[type]}.png` : '';
+    const typeIconMarkup = (type, className) => {
+      const url = typeIconUrl(type);
+      return url ? `<img class="${className}" src="${url}" alt="${type} type icon" title="${type} type" loading="lazy" decoding="async"/>` : (typeAbbr[type] || type.slice(0,3).toUpperCase());
+    };
     function renderRosterTypes() {
       document.querySelectorAll('.mon-tile').forEach(tile => {
         const raw = megaView ? tile.dataset.megaTypes : tile.dataset.baseTypes;
         const row = tile.querySelector('.type-row');
         if (!raw || !row) return;
-        row.innerHTML = raw.split(',').map(type => `<span class="type-mini type-${type.toLowerCase()}" title="${type} type" aria-label="${type} type">${typeAbbr[type] || type.slice(0,3).toUpperCase()}</span>`).join('');
+        row.innerHTML = raw.split(',').map(type => `<span class="type-mini type-${type.toLowerCase()}" title="${type} type" aria-label="${type} type">${typeIconMarkup(type, 'type-icon')}</span>`).join('');
         const badge = tile.querySelector('.mega-badge');
         if (badge) badge.classList.toggle('hidden', !megaView);
+      });
+    }
+    function renderCoverageTypeIcons() {
+      document.querySelectorAll('.type-chip').forEach(chip => {
+        const type = Object.keys(typeIconIds).find(name => chip.classList.contains(`type-${name.toLowerCase()}`));
+        const mark = chip.querySelector('.type-chip-mark');
+        if (!type || !mark) return;
+        mark.innerHTML = typeIconMarkup(type, 'type-chip-icon');
+        mark.setAttribute('aria-label', `${type} type icon`);
       });
     }
 
@@ -1815,6 +1990,7 @@ Turn 4 condition: ${n.turn4||''}
       });
     }
     renderRosterTypes();
+    renderCoverageTypeIcons();
     renderArchetypeMoveProfiles();
     renderRosterItems();
     loadCurrent(); renderNotes();
