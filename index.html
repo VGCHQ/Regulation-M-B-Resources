@@ -1915,7 +1915,10 @@ Turn 4 condition: ${n.turn4||''}
       'Coba Berry':'https://play.pokemonshowdown.com/sprites/itemicons/coba-berry.png',
       'Kasib Berry':'https://play.pokemonshowdown.com/sprites/itemicons/kasib-berry.png',
       'Colbur Berry':'https://play.pokemonshowdown.com/sprites/itemicons/colbur-berry.png',
-      'Rocky Helmet':'https://play.pokemonshowdown.com/sprites/itemicons/rocky-helmet.png',
+      'Chople Berry':'https://play.pokemonshowdown.com/sprites/itemicons/chople-berry.png',
+      'Roseli Berry':'https://play.pokemonshowdown.com/sprites/itemicons/roseli-berry.png',
+      'Passho Berry':'https://play.pokemonshowdown.com/sprites/itemicons/passho-berry.png',
+      'Sharp Beak':'https://play.pokemonshowdown.com/sprites/itemicons/sharp-beak.png',
       'Mystic Water':'https://play.pokemonshowdown.com/sprites/itemicons/mystic-water.png',
       'Fairy Feather':'https://i.pokebase.app/pokemon-champions/x2NwRdU_fjkvWAx0bctWJ.png?height=128&width=128',
       'Floettite':'https://i.pokebase.app/pokemon-champions/DPmFJBuJ0cwx-Vty_9xM7.png?height=128&width=128',
@@ -1927,22 +1930,23 @@ Turn 4 condition: ${n.turn4||''}
       'Raichunite Y':'https://assets.pokemon-zone.com/champions-assets/uicontents/scriptableobject/mdicon02/ui_ItemIcon_02_2636.webp'
     };
     const archetypeItemProfiles = {
-      'archetype-01': { 'Charizard':'Charizardite Y', 'Aerodactyl':'Focus Sash', 'Farigiraf':'Sitrus Berry', 'Garchomp':'Life Orb', 'Sylveon':'Fairy Feather', 'Kingambit':'Black Glasses' },
-      'archetype-02': { 'Charizard':'Charizardite Y', 'Floette':'Floettite', 'Whimsicott':'Focus Sash', 'Garchomp':'Choice Scarf', 'Basculegion':'Mystic Water', 'Kingambit':'Black Glasses' },
-      'archetype-03': { 'Delphox':'Delphoxite', 'Blastoise':'Blastoisinite', 'Sinistcha':'Sitrus Berry', 'Sneasler':'White Herb', 'Incineroar':'Charcoal', 'Kingambit':'Black Glasses' },
-      'archetype-04': { 'Charizard':'Charizardite Y', 'Venusaur':'Venusaurite', 'Grimmsnarl':'Light Clay', 'Pelipper':'Damp Rock', 'Archaludon':'Sitrus Berry', 'Basculegion':'Mystic Water' },
-      'archetype-05': { 'Charizard':'Charizardite Y', 'Venusaur':'Venusaurite', 'Garchomp':'Life Orb', 'Incineroar':'Charcoal', 'Toxapex':'Rocky Helmet', 'Annihilape':'Lum Berry' },
-      'archetype-06': { 'Floette':'Floettite', 'Sneasler':'White Herb', 'Sinistcha':'Sitrus Berry', 'Incineroar':'Charcoal', 'Kingambit':'Black Glasses', 'Garchomp':'Choice Scarf' },
-      'archetype-07': { 'Froslass':'Froslassite', 'Scovillain':'Scovillainite', 'Basculegion':'Mystic Water', 'Kingambit':'Black Glasses', 'Sneasler':'White Herb', 'Lycanroc-Dusk':'Focus Sash' },
-      'archetype-08': { 'Tyranitar':'Tyranitarite', 'Excadrill':'Life Orb', 'Staraptor':'Staraptite', 'Milotic':'Leftovers', 'Sinistcha':'Sitrus Berry', 'Gholdengo':'Choice Scarf' },
-      'archetype-09': { 'Froslass':'Froslassite', 'Dragonite':'Dragoninite', 'Basculegion':'Mystic Water', 'Kingambit':'Black Glasses', 'Sneasler':'White Herb', 'Milotic':'Leftovers' },
-      'archetype-10': { 'Swampert':'Swampertite', 'Pelipper':'Damp Rock', 'Archaludon':'Sitrus Berry', 'Grimmsnarl':'Light Clay', 'Sinistcha':'Kasib Berry', 'Metagross':'Metagrossite' },
-      'archetype-11': { 'Gengar':'Gengarite', 'Floette':'Floettite', 'Kommo-o':'Lum Berry', 'Incineroar':'Charcoal', 'Sneasler':'White Herb', 'Kingambit':'Black Glasses' },
-      'archetype-12': { 'A-Ninetales':'Light Clay', 'Gholdengo':'Choice Scarf', 'Staraptor':'Staraptite', 'Incineroar':'Charcoal', 'Sinistcha':'Kasib Berry', 'H-Arcanine':'Focus Sash' },
-      'archetype-13': { 'Gardevoir':'Gardevoirite', 'Basculegion':'Mystic Water', 'Talonflame':'Focus Sash', 'Maushold':'Mental Herb', 'Kingambit':'Black Glasses', 'Kommo-o':'Lum Berry' },
-      'archetype-14': { 'Metagross':'Metagrossite', 'Charizard':'Charizardite Y', 'Grimmsnarl':'Light Clay', 'Kingambit':'Black Glasses', 'Toxapex':'Rocky Helmet', 'Garchomp':'Life Orb' },
-      'archetype-15': { 'Blaziken':'Blazikenite', 'Froslass':'Froslassite', 'Dragonite':'Dragoninite', 'Toxapex':'Rocky Helmet', 'Sneasler':'White Herb', 'Kingambit':'Black Glasses' },
-      'archetype-16': { 'Raichu':'Raichunite Y', 'Floette':'Floettite', 'Incineroar':'Sitrus Berry', 'Ceruledge':'Colbur Berry', 'Sinistcha':'Kasib Berry', 'Milotic':'Leftovers' }
+      'archetype-01': { 'Charizard':'Charizardite Y', 'Aerodactyl':'Aerodactylite', 'Farigiraf':'Sitrus Berry', 'Garchomp':'Life Orb', 'Sylveon':'Fairy Feather', 'Kingambit':'Focus Sash' },
+      'archetype-02': { 'Charizard':'Charizardite Y', 'Floette':'Floettite', 'Whimsicott':'Focus Sash', 'Garchomp':'Life Orb', 'Basculegion':'Mystic Water', 'Kingambit':'Black Glasses' },
+      'archetype-03': { 'Delphox':'Delphoxite', 'Blastoise':'Blastoisinite', 'Sinistcha':'Kasib Berry', 'Sneasler':'Focus Sash', 'Incineroar':'Sitrus Berry', 'Kingambit':'Black Glasses' },
+      'archetype-04': { 'Charizard':'Charizardite Y', 'Venusaur':'Focus Sash', 'Grimmsnarl':'Light Clay', 'Pelipper':'Sitrus Berry', 'Archaludon':'Leftovers', 'Basculegion':'Choice Scarf' },
+      'archetype-05': { 'Charizard':'Charizardite Y', 'Venusaur':'Life Orb', 'Garchomp':'Choice Scarf', 'Incineroar':'Sitrus Berry', 'Toxapex':'Leftovers', 'Annihilape':'Focus Sash' },
+      'archetype-06': { 'Floette':'Floettite', 'Sneasler':'White Herb', 'Sinistcha':'Sitrus Berry', 'Incineroar':'Sitrus Berry', 'Kingambit':'Chople Berry', 'Garchomp':'Life Orb' },
+      'archetype-07': { 'Froslass':'Froslassite', 'Scovillain':'Scovillainite', 'Basculegion':'Sitrus Berry', 'Kingambit':'Life Orb', 'Sneasler':'White Herb', 'Lycanroc-Dusk':'Focus Sash' },
+      'archetype-08': { 'Tyranitar':'Tyranitarite', 'Excadrill':'Focus Sash', 'Staraptor':'Staraptite', 'Milotic':'Leftovers', 'Sinistcha':'Colbur Berry', 'Gholdengo':'Life Orb' },
+      'archetype-09': { 'Froslass':'Froslassite', 'Dragonite':'Dragoninite', 'Basculegion':'Sitrus Berry', 'Kingambit':'Chople Berry', 'Sneasler':'Focus Sash', 'Milotic':'Leftovers' },
+      'archetype-10': { 'Swampert':'Swampertite', 'Pelipper':'Sitrus Berry', 'Archaludon':'Leftovers', 'Grimmsnarl':'Light Clay', 'Sinistcha':'Coba Berry', 'Metagross':'Metagrossite' },
+      'archetype-11': { 'Gengar':'Gengarite', 'Politoed':'Sitrus Berry', 'Archaludon':'Leftovers', 'Swampert':'Swampertite', 'Incineroar':'Passho Berry', 'Vivillon':'Focus Sash' },
+      'archetype-12': { 'A-Ninetales':'Light Clay', 'Gholdengo':'Life Orb', 'Staraptor':'Staraptite', 'Incineroar':'Sitrus Berry', 'Sinistcha':'Kasib Berry', 'H-Arcanine':'Focus Sash' },
+      'archetype-13': { 'Gardevoir':'Gardevoirite', 'Basculegion':'Choice Scarf', 'Talonflame':'Sharp Beak', 'Maushold':'Focus Sash', 'Kingambit':'Black Glasses', 'Kommo-o':'Life Orb' },
+      'archetype-14': { 'Metagross':'Metagrossite', 'Charizard':'Charizardite Y', 'Grimmsnarl':'Roseli Berry', 'Kingambit':'Black Glasses', 'Toxapex':'Leftovers', 'Garchomp':'Sitrus Berry' },
+      'archetype-15': { 'Blaziken':'Blazikenite', 'Froslass':'Froslassite', 'Dragonite':'Dragoninite', 'Toxapex':'Leftovers', 'Sneasler':'Focus Sash', 'Kingambit':'Chople Berry' },
+      'archetype-16': { 'Raichu':'Raichunite Y', 'Floette':'Floettite', 'Incineroar':'Sitrus Berry', 'Ceruledge':'Colbur Berry', 'Sinistcha':'Kasib Berry', 'Milotic':'Leftovers' },
+      'archetype-17': { 'Charizard':'Charizardite Y', 'Garchomp':'Life Orb', 'Kingambit':'Chople Berry', 'Incineroar':'Sitrus Berry', 'Sinistcha':'Kasib Berry', 'Basculegion':'Choice Scarf' }
     };
     function renderRosterItems() {
       document.querySelectorAll('.archetype-card .mon-tile').forEach(tile => {
